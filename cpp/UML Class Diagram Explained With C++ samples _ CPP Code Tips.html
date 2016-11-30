@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<!-- saved from url=(0088)https://cppcodetips.wordpress.com/2013/12/23/uml-class-diagram-explained-with-c-samples/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<title>UML Class Diagram Explained With C++ samples | CPP Code Tips</title>
+<link rel="profile" href="http://gmpg.org/xfn/11">
+<link rel="pingback" href="https://cppcodetips.wordpress.com/xmlrpc.php">
+<!--[if lt IE 9]>
+<script src="https://s0.wp.com/wp-content/themes/pub/adelle/js/html5.js" type="text/javascript"></script>
+<![endif]-->
+
+<link rel="dns-prefetch" href="https://s2.wp.com/">
+<link rel="dns-prefetch" href="https://s1.wp.com/">
+<link rel="dns-prefetch" href="https://s0.wp.com/">
+<link rel="dns-prefetch" href="https://fonts.googleapis.com/">
+<link rel="alternate" type="application/rss+xml" title="CPP Code Tips » Feed" href="https://cppcodetips.wordpress.com/feed/">
+<link rel="alternate" type="application/rss+xml" title="CPP Code Tips » Comments Feed" href="https://cppcodetips.wordpress.com/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="CPP Code Tips » UML Class Diagram Explained With C++ samples Comments Feed" href="https://cppcodetips.wordpress.com/2013/12/23/uml-class-diagram-explained-with-c-samples/feed/">
+	<script async="" src="./UML Class Diagram Explained With C++ samples _ CPP Code Tips_files/beacon.js"></script><script type="text/javascript" src="./UML Class Diagram Explained With C++ samples _ CPP Code Tips_files/showad.js" async=""></script><script type="text/javascript">
+		/* <![CDATA[ */
+		function addLoadEvent(func) {
+			var oldonload = window.onload;
+			if (typeof window.onload != 'function') {
+				window.onload = func;
+			} else {
+				window.onload = function () {
+					oldonload();
+					func();
+				}
+			}
+		}
+		/* ]]> */
+	</script>
+			<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s0.wp.com\/wp-content\/mu-plugins\/wpcom-smileys\/twemoji\/2\/72x72\/","ext":".png","svgUrl":"https:\/\/s0.wp.com\/wp-content\/mu-plugins\/wpcom-smileys\/twemoji\/2\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/s1.wp.com\/wp-includes\/js\/wp-emoji-release.min.js?m=1473172720h&ver=4.6.1-RC1-38499"}};
+			!function(a,b,c){function d(a){var c,d,e,f,g,h=b.createElement("canvas"),i=h.getContext&&h.getContext("2d"),j=String.fromCharCode;if(!i||!i.fillText)return!1;switch(i.textBaseline="top",i.font="600 32px Arial",a){case"flag":return i.fillText(j(55356,56806,55356,56826),0,0),!(h.toDataURL().length<3e3)&&(i.clearRect(0,0,h.width,h.height),i.fillText(j(55356,57331,65039,8205,55356,57096),0,0),c=h.toDataURL(),i.clearRect(0,0,h.width,h.height),i.fillText(j(55356,57331,55356,57096),0,0),d=h.toDataURL(),c!==d);case"diversity":return i.fillText(j(55356,57221),0,0),e=i.getImageData(16,16,1,1).data,f=e[0]+","+e[1]+","+e[2]+","+e[3],i.fillText(j(55356,57221,55356,57343),0,0),e=i.getImageData(16,16,1,1).data,g=e[0]+","+e[1]+","+e[2]+","+e[3],f!==g;case"simple":return i.fillText(j(55357,56835),0,0),0!==i.getImageData(16,16,1,1).data[0];case"unicode8":return i.fillText(j(55356,57135),0,0),0!==i.getImageData(16,16,1,1).data[0];case"unicode9":return i.fillText(j(55358,56631),0,0),0!==i.getImageData(16,16,1,1).data[0]}return!1}function e(a){var c=b.createElement("script");c.src=a,c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g,h,i;for(i=Array("simple","flag","unicode8","diversity","unicode9"),c.supports={everything:!0,everythingExceptFlag:!0},h=0;h<i.length;h++)c.supports[i[h]]=d(i[h]),c.supports.everything=c.supports.everything&&c.supports[i[h]],"flag"!==i[h]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[i[h]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script><script src="./UML Class Diagram Explained With C++ samples _ CPP Code Tips_files/wp-emoji-release.min.js" type="text/javascript"></script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel="stylesheet" id="all-css-0-1" href="./UML Class Diagram Explained With C++ samples _ CPP Code Tips_files/saved_resource" type="text/css" media="all">
+<link rel="stylesheet" id="adelle-muli-css" href="./UML Class Diagram Explained With C++ samples _ CPP Code Tips_files/css" type="text/css" media="all">
+<link rel="stylesheet" id="adelle-lora-css" href="./UML Class Diagram Explained With C++ samples _ CPP Code Tips_files/css(1)" type="text/css" media="all">
+<link rel="stylesheet" id="adelle-montserrat-css" href="./UML Class Diagram Explained With C++ samples _ CPP Code Tips_files/css(2)" type="text/css" media="all">
+<link rel="stylesheet" id="all-css-6-1" href="./UML Class Diagram Explained With C++ samples _ CPP Code Tips_files/saved_resource(1)" type="text/css" media="all">
+<link rel="stylesheet" id="print-css-7-1" href="./UML Class Diagram Explained With C++ samples _ CPP Code Tips_files/global-print.css" type="text/css" media="print">
+<link rel="stylesheet" id="all-css-8-1" href="./UML Class Diagram Explained With C++ samples _ CPP Code Tips_files/saved_resource(2)" type="text/css" media="all">
+<script type="text/javascript" src="./UML Class Diagram Explained With C++ samples _ CPP Code Tips_files/saved_resource(3)"></script>
+<link rel="stylesheet" id="all-css-0-2" href="./UML Class Diagram Explained With C++ samples _ CPP Code Tips_files/style.css" type="text/css" media="all">
+<!--[if lt IE 8]>
+<link rel='stylesheet' id='highlander-comments-ie7-css'  href='https://s1.wp.com/wp-content/mu-plugins/highlander-comments/style-ie7.css?m=1351637563h&#038;ver=20110606' type='text/css' media='all' />
+<![endif]-->
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://cppcodetips.wordpress.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://s1.wp.com/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="C++ class for pthread conditional variable" href="https://cppcodetips.wordpress.com/2013/12/11/47/">
+<link rel="next" title="C++ Wrapper For SQLITE C API" href="https://cppcodetips.wordpress.com/2014/01/02/c-wrapper-for-sqlite-c-api/">
+<meta name="generator" content="WordPress.com">
+<link rel="canonical" href="https://cppcodetips.wordpress.com/2013/12/23/uml-class-diagram-explained-with-c-samples/">
+<link rel="shortlink" href="http://wp.me/p48fZA-13">
+<link rel="alternate" type="application/json+oembed" href="https://public-api.wordpress.com/oembed/1.0/?format=json&amp;url=https%3A%2F%2Fcppcodetips.wordpress.com%2F2013%2F12%2F23%2Fuml-class-diagram-explained-with-c-samples%2F&amp;for=wpcom-auto-discovery"><link rel="alternate" type="application/xml+oembed" href="https://public-api.wordpress.com/oembed/1.0/?format=xml&amp;url=https%3A%2F%2Fcppcodetips.wordpress.com%2F2013%2F12%2F23%2Fuml-class-diagram-explained-with-c-samples%2F&amp;for=wpcom-auto-discovery">
+<!-- Jetpack Open Graph Tags -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="UML Class Diagram Explained With C++ samples">
+<meta property="og:url" content="https://cppcodetips.wordpress.com/2013/12/23/uml-class-diagram-explained-with-c-samples/">
+<meta property="og:description" content="As you know a Class diagram is a diagram showing different classes in a system their attribute, operation and the relationship among different objects. Even I have been using it for long time; I al…">
+<meta property="article:published_time" content="2013-12-23T11:51:05+00:00">
+<meta property="article:modified_time" content="2015-12-21T07:56:13+00:00">
+<meta property="og:site_name" content="CPP Code Tips">
+<meta property="og:image" content="https://cppcodetips.files.wordpress.com/2013/12/class_diagram_template.png">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:site" content="@wordpressdotcom">
+<meta name="twitter:image" content="https://cppcodetips.files.wordpress.com/2013/12/classiagram.gif?w=240">
+<meta name="twitter:card" content="summary">
+<meta property="fb:app_id" content="249643311490">
+<meta property="article:publisher" content="https://www.facebook.com/WordPresscom">
+<link rel="shortcut icon" type="image/x-icon" href="https://s2.wp.com/i/favicon.ico" sizes="16x16 24x24 32x32 48x48">
+<link rel="icon" type="image/x-icon" href="https://s2.wp.com/i/favicon.ico" sizes="16x16 24x24 32x32 48x48">
+<link rel="apple-touch-icon-precomposed" href="https://s0.wp.com/i/webclip.png">
+<link rel="openid.server" href="https://cppcodetips.wordpress.com/?openidserver=1">
+<link rel="openid.delegate" href="https://cppcodetips.wordpress.com/">
+<link rel="search" type="application/opensearchdescription+xml" href="https://cppcodetips.wordpress.com/osd.xml" title="CPP Code Tips">
+<link rel="search" type="application/opensearchdescription+xml" href="https://s1.wp.com/opensearch.xml" title="WordPress.com">
+		<style type="text/css">
+			.recentcomments a {
+				display: inline !important;
+				padding: 0 !important;
+				margin: 0 !important;
+			}
+
+			table.recentcommentsavatartop img.avatar, table.recentcommentsavatarend img.avatar {
+				border: 0px;
+				margin: 0;
+			}
+
+			table.recentcommentsavatartop a, table.recentcommentsavatarend a {
+				border: 0px !important;
+				background-color: transparent !important;
+			}
+
+			td.recentcommentsavatarend, td.recentcommentsavatartop {
+				padding: 0px 0px 1px 0px;
+				margin: 0px;
+			}
+
+			td.recentcommentstextend {
+				border: none !important;
+				padding: 0px 0px 2px 10px;
+			}
+
+			.rtl td.recentcommentstextend {
+				padding: 0px 10px 2px 0px;
+			}
+
+			td.recentcommentstexttop {
+				border: none;
+				padding: 0px 0px 0px 10px;
+			}
+
+			.rtl td.recentcommentstexttop {
+				padding: 0px 10px 0px 0px;
+			}
+		</style>
+		<meta name="application-name" content="CPP Code Tips"><meta name="msapplication-window" content="width=device-width;height=device-height"><meta name="msapplication-tooltip" content="Sadique Ali&#39;s C++ Blog ..Quest For Knowledge..."><meta name="msapplication-task" content="name=Subscribe;action-uri=https://cppcodetips.wordpress.com/feed/;icon-uri=https://s2.wp.com/i/favicon.ico"><meta name="msapplication-task" content="name=Sign up for a free blog;action-uri=http://wordpress.com/signup/;icon-uri=https://s2.wp.com/i/favicon.ico"><meta name="msapplication-task" content="name=WordPress.com Support;action-uri=http://support.wordpress.com/;icon-uri=https://s2.wp.com/i/favicon.ico"><meta name="msapplication-task" content="name=WordPress.com Forums;action-uri=http://forums.wordpress.com/;icon-uri=https://s2.wp.com/i/favicon.ico"><meta name="title" content="UML Class Diagram Explained With C++ samples | CPP Code Tips on WordPress.com">
+<meta name="description" content="As you know a Class diagram is a diagram showing different classes in a system their attribute, operation and the relationship among different objects. Even I have been using it for long time; I always had confusion each time when I use it. This post is meant for such people; also it will be helpful…">
+		<script type="text/javascript" src="./UML Class Diagram Explained With C++ samples _ CPP Code Tips_files/amzn_ads.js"></script>
+		<script type="text/javascript">
+		try { amznads.getAds("3033"); } catch(e) { /* ignore */ }
+		</script><script type="text/javascript" src="./UML Class Diagram Explained With C++ samples _ CPP Code Tips_files/bid"></script>
+		<script type="text/javascript">
+		try {
+			var a9_p = amznads.getKeys(),
+			_ipw_custom = {
+				wordAds: '0',
+				adSafe: '0',
+				domain: 'cppcodetips.wordpress.com',
+				pageURL: 'https://cppcodetips.wordpress.com/2013/12/23/uml-class-diagram-explained-with-c-samples/'
+			};
+			if("undefined"!=typeof a9_p&&""!=a9_p&&null!==a9_p&&"[object Array]"===Object.prototype.toString.call(a9_p)){var a="",b=0,c=a9_p.length;a9_p.sort();for(var d=0;d<c;d++){a9_p[d-b]=a9_p[d-b].replace(/a1x6p/,"a160x600p");var e=a9_p[d-b].split("p");e[0]==a&&(a9_p.splice(d-b,1),b++);a=e[0]}_ipw_custom.amznPay=a9_p};document.close();
+		} catch(e) {}
+		</script> 		<script type="text/javascript" src="./UML Class Diagram Explained With C++ samples _ CPP Code Tips_files/publishertag.js"></script>
+ 		<script type="text/javascript" src="./UML Class Diagram Explained With C++ samples _ CPP Code Tips_files/head.js"></script>
+		<script type="text/javascript">
+		jQuery(window).ready(function () {
+			jQuery("a.wpa-about").text("About these ads");
+		});
+		</script><link rel="amphtml" href="https://cppcodetips.wordpress.com/2013/12/23/uml-class-diagram-explained-with-c-samples/amp/"><link rel="stylesheet" type="text/css" href="./UML Class Diagram Explained With C++ samples _ CPP Code Tips_files/shCore.css"><link rel="stylesheet" type="text/css" href="./UML Class Diagram Explained With C++ samples _ CPP Code Tips_files/shThemeDefault.css"><style type="text/css" id="syntaxhighlighteranchor"></style>
+<script type="text/javascript">
+	window.google_analytics_uacct = "UA-52447-2";
+</script>
+
+<script type="text/javascript">
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-52447-2']);
+	_gaq.push(['_setDomainName', 'wordpress.com']);
+	_gaq.push(['_initData']);
+	_gaq.push(['_trackPageview']);
+
+	(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
+	})();
+</script><script type="text/javascript" async="" src="./UML Class Diagram Explained With C++ samples _ CPP Code Tips_files/ga.js"></script>
+<link rel="stylesheet" type="text/css" id="gravatar-card-css" href="./UML Class Diagram Explained With C++ samples _ CPP Code Tips_files/hovercard.css"><link rel="stylesheet" type="text/css" id="gravatar-card-services-css" href="./UML Class Diagram Explained With C++ samples _ CPP Code Tips_files/services.css"></head>
+
+<body class="single single-post postid-65 single-format-standard mp6 customizer-styles-applied highlander-enabled highlander-light">
+<div id="wrapper" class="site-container">
+	<div id="page" class="hfeed site">
+				<header id="masthead" class="site-header" role="banner">
+			<hgroup>
+				<h1 class="site-title"><a href="https://cppcodetips.wordpress.com/" title="CPP Code Tips" rel="home">CPP Code Tips</a></h1>
+				<h2 class="site-description">Sadique Ali's C++ Blog ..Quest For Knowledge…</h2>
+			</hgroup>
+
+			
+			<nav id="site-navigation" class="navigation-main" role="navigation">
+				<h1 class="menu-toggle">Menu</h1>
+				<div class="screen-reader-text skip-link"><a href="https://cppcodetips.wordpress.com/2013/12/23/uml-class-diagram-explained-with-c-samples/#content" title="Skip to content">Skip to content</a></div>
+
+				<div class="menu"><ul><li><a href="https://cppcodetips.wordpress.com/">Home</a></li><li class="page_item page-item-1"><a href="https://cppcodetips.wordpress.com/about/">About</a></li></ul></div>
+			</nav><!-- #site-navigation -->
+		</header><!-- #masthead -->
+
+		<div id="main" class="site-main">
+
+	<div id="primary" class="content-area">
+		<div id="content" class="site-content" role="main">
+
+		
+			
+<article id="post-65" class="post-65 post type-post status-publish format-standard hentry category-c tag-class-diagram tag-class-diagram-explained-with-c-codes">
+	<header class="entry-header clear">
+					<div class="post-date"><a href="https://cppcodetips.wordpress.com/2013/12/23/uml-class-diagram-explained-with-c-samples/" title="11:51 am" rel="bookmark"><time class="entry-date" datetime="December 23, 2013"><span class="entry-day">23</span><span class="entry-month">Dec</span><span class="entry-year">2013</span></time></a></div>				<h1 class="entry-title">UML Class Diagram Explained With C++&nbsp;samples</h1>
+					<div class="entry-meta">
+						<span class="cat-links">
+			Posted in <a href="https://cppcodetips.wordpress.com/category/c/" rel="category tag">C++</a>		</span>
+			
+	<span class="byline">
+		by <span class="author vcard"><a class="url fn n" href="https://cppcodetips.wordpress.com/author/sadiquealy/" title="View all posts by Sadique Ali E" rel="author">Sadique Ali E</a></span>	</span>
+			</div><!-- .entry-meta -->
+			</header><!-- .entry-header -->
+
+	<div class="entry-content">
+		<p>As you know a Class diagram is a diagram showing different classes in a system their attribute, operation and the relationship among different objects.</p>
+<p><a href="https://cppcodetips.files.wordpress.com/2013/12/classiagram.gif"><img class="size-full wp-image-146 aligncenter" alt="Class Diagram" src="./UML Class Diagram Explained With C++ samples _ CPP Code Tips_files/classiagram.gif"></a></p>
+<p>Even I have been using it for long time; I always had confusion each time when I use it. This post is meant for such people; also it will be helpful for beginners, here I will explain the class diagram with C++ class example.</p>
+<p><b>A class representation</b></p>
+<div><div id="highlighter_443701" class="syntaxhighlighter  cpp"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="cpp keyword bold">class</code> <code class="cpp plain">Circle {</code></div><div class="line number2 index1 alt1"><code class="cpp keyword bold">private</code><code class="cpp plain">:</code></div><div class="line number3 index2 alt2"><code class="cpp color1 bold">double</code> <code class="cpp plain">radius;</code></div><div class="line number4 index3 alt1"><code class="cpp plain">Point center;</code></div><div class="line number5 index4 alt2"><code class="cpp keyword bold">public</code><code class="cpp plain">:</code></div><div class="line number6 index5 alt1"><code class="cpp plain">setRadius(</code><code class="cpp color1 bold">double</code> <code class="cpp plain">radius);</code></div><div class="line number7 index6 alt2"><code class="cpp plain">setCenter(Point center);</code></div><div class="line number8 index7 alt1"><code class="cpp color1 bold">double</code> <code class="cpp plain">getArea();</code></div><div class="line number9 index8 alt2"><code class="cpp color1 bold">double</code> <code class="cpp plain">getCircumfrence();</code></div><div class="line number10 index9 alt1"><code class="cpp plain">};</code></div></div></td></tr></tbody></table></div></div>
+<p><strong>Class diagram for the above class is shown below.</strong><br>
+<a href="https://cppcodetips.files.wordpress.com/2013/12/class_diagram_sample.png"><img class="alignnone size-full wp-image-109" alt="class_diagram_sample" src="./UML Class Diagram Explained With C++ samples _ CPP Code Tips_files/class_diagram_sample.png" srcset="https://cppcodetips.files.wordpress.com/2013/12/class_diagram_sample.png 239w, https://cppcodetips.files.wordpress.com/2013/12/class_diagram_sample.png?w=150 150w" sizes="(max-width: 239px) 100vw, 239px"></a><br>
+<strong>Different visibility of the class can be represented as</strong><br>
+“+” Public<br>
+“-” Private<br>
+“#” Protected</p>
+<p><strong>Different Parameter direction</strong><br>
+“in” &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; The parameter is an input parameter.<br>
+“Inout” &nbsp; &nbsp;The parameter is capable of both input and output.<br>
+“Out” &nbsp; &nbsp; &nbsp; &nbsp;The parameter is an output parameter.</p>
+<p><strong>Different type of members in a class</strong><br>
+1) Static members are represented as underlined.<br>
+2) Pure virtual functions are represented as italics.</p>
+<p><strong>Class relationship</strong></p>
+<p>In a system a class may be related to different classes,following are the different relation ship.</p>
+<ul>
+<li>Association (knows a)</li>
+<li>Dependency (uses a)</li>
+<li>Composition (has a)</li>
+<li>Aggregation (has a)</li>
+<li>&nbsp;Inheritance (is a)</li>
+<li>&nbsp;Class template</li>
+</ul>
+<p><strong>Different Multiplicity in a relation</strong><br>
+“0..1” &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;No instances, or one instance (optional, may)<br>
+“1” &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Exactly one instance<br>
+“0..* or *” &nbsp; &nbsp;Zero or more instances<br>
+“1..*” &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;One or more instances (at least one)<br>
+<strong>Association</strong><br>
+One object is aware of another; it contains a pointer or reference to another object.<br>
+<em>Representaion</em><br>
+<a href="https://cppcodetips.files.wordpress.com/2013/12/association_class_diagram.png"><img class="alignnone size-medium wp-image-108" alt="association_class_diagram" src="./UML Class Diagram Explained With C++ samples _ CPP Code Tips_files/association_class_diagram.png" width="300" height="67" srcset="https://cppcodetips.files.wordpress.com/2013/12/association_class_diagram.png?w=297&amp;h=67 297w, https://cppcodetips.files.wordpress.com/2013/12/association_class_diagram.png?w=150&amp;h=34 150w, https://cppcodetips.files.wordpress.com/2013/12/association_class_diagram.png?w=300&amp;h=68 300w, https://cppcodetips.files.wordpress.com/2013/12/association_class_diagram.png 315w" sizes="(max-width: 300px) 100vw, 300px"></a><br>
+<em>C++ Example</em></p>
+<div><div id="highlighter_811031" class="syntaxhighlighter  cpp"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="cpp plain">Class X {</code></div><div class="line number2 index1 alt1">&nbsp;</div><div class="line number3 index2 alt2"><code class="cpp spaces">&nbsp;&nbsp;</code><code class="cpp plain">X(Y *y) : y_ptr(y) {}</code></div><div class="line number4 index3 alt1">&nbsp;</div><div class="line number5 index4 alt2"><code class="cpp spaces">&nbsp;&nbsp;</code><code class="cpp keyword bold">void</code> <code class="cpp plain">SetY(Y *y) { y_ptr = y;&nbsp;&nbsp; }</code></div><div class="line number6 index5 alt1">&nbsp;</div><div class="line number7 index6 alt2"><code class="cpp spaces">&nbsp;&nbsp;</code><code class="cpp keyword bold">void</code> <code class="cpp plain">f()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; { y_ptr-&gt;Foo();}</code></div><div class="line number8 index7 alt1"><code class="cpp spaces">&nbsp;&nbsp;</code><code class="cpp plain">----</code></div><div class="line number9 index8 alt2"><code class="cpp spaces">&nbsp;&nbsp;</code><code class="cpp plain">Y *y_ptr; </code><code class="cpp comments">// pointer</code></div><div class="line number10 index9 alt1"><code class="cpp plain">};</code></div></div></td></tr></tbody></table></div></div>
+<p><strong>Dependency</strong><br>
+One class depends on another if the independent class is a parameter variable or local variable of a method of the dependent class<br>
+<em>Representaion</em></p>
+<p><a href="https://cppcodetips.files.wordpress.com/2013/12/class_diagram_dependency.png"><img class="alignnone size-medium wp-image-111" alt="class_diagram_dependency" src="./UML Class Diagram Explained With C++ samples _ CPP Code Tips_files/class_diagram_dependency.png" width="300" height="56" srcset="https://cppcodetips.files.wordpress.com/2013/12/class_diagram_dependency.png?w=300&amp;h=56 300w, https://cppcodetips.files.wordpress.com/2013/12/class_diagram_dependency.png?w=150&amp;h=28 150w, https://cppcodetips.files.wordpress.com/2013/12/class_diagram_dependency.png 316w" sizes="(max-width: 300px) 100vw, 300px"></a><br>
+<em>C++ Example</em></p>
+<div><div id="highlighter_379599" class="syntaxhighlighter  cpp"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="cpp keyword bold">class</code> <code class="cpp plain">X {</code></div><div class="line number2 index1 alt1"><code class="cpp spaces">&nbsp;</code><code class="cpp plain">...</code></div><div class="line number3 index2 alt2"><code class="cpp spaces">&nbsp;</code><code class="cpp keyword bold">void</code> <code class="cpp plain">f1(Y y)&nbsp; {…;&nbsp; y.Foo();&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</code></div><div class="line number4 index3 alt1"><code class="cpp spaces">&nbsp;</code><code class="cpp keyword bold">void</code> <code class="cpp plain">f2(Y *y) {…;&nbsp; y-&gt;Foo();&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</code></div><div class="line number5 index4 alt2"><code class="cpp spaces">&nbsp;</code><code class="cpp keyword bold">void</code> <code class="cpp plain">f3(Y &amp;y) {…;&nbsp; y.Foo();&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</code></div><div class="line number6 index5 alt1"><code class="cpp spaces">&nbsp;</code><code class="cpp keyword bold">void</code> <code class="cpp plain">f4()&nbsp;&nbsp;&nbsp;&nbsp; {&nbsp;&nbsp; Y y; y.Foo();&nbsp; …}</code></div><div class="line number7 index6 alt2"><code class="cpp spaces">&nbsp;</code><code class="cpp keyword bold">void</code> <code class="cpp plain">f5()&nbsp;&nbsp;&nbsp;&nbsp; {…; Y::StaticFoo(); }</code></div><div class="line number8 index7 alt1"><code class="cpp spaces">&nbsp;</code><code class="cpp plain">...</code></div><div class="line number9 index8 alt2"><code class="cpp plain">};</code></div></div></td></tr></tbody></table></div></div>
+<p><strong>Aggregation</strong><br>
+Aggregation can occur when a class is a collection or container of other classes, but where the contained classes do not have a strong life cycle dependency on the container—essentially, if the container is destroyed, its contents are not. You may have confusion between aggregation and association .Association differs from aggregation only in that it does not imply any containment.<br>
+<em>&nbsp;Representaion</em><br>
+<a href="https://cppcodetips.files.wordpress.com/2013/12/class_diagram_aggregation.png"><img class="alignnone size-medium wp-image-112" alt="class_diagram_aggregation" src="./UML Class Diagram Explained With C++ samples _ CPP Code Tips_files/class_diagram_aggregation.png" width="300" height="67" srcset="https://cppcodetips.files.wordpress.com/2013/12/class_diagram_aggregation.png?w=297&amp;h=67 297w, https://cppcodetips.files.wordpress.com/2013/12/class_diagram_aggregation.png?w=150&amp;h=34 150w, https://cppcodetips.files.wordpress.com/2013/12/class_diagram_aggregation.png?w=300&amp;h=68 300w, https://cppcodetips.files.wordpress.com/2013/12/class_diagram_aggregation.png 315w" sizes="(max-width: 300px) 100vw, 300px"></a><br>
+<em>C++ Example</em></p>
+<p>Example 1<strong><br>
+</strong></p>
+<div><div id="highlighter_929865" class="syntaxhighlighter  cpp"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="cpp keyword bold">class</code> <code class="cpp plain">Window</code></div><div class="line number2 index1 alt1"><code class="cpp plain">{</code></div><div class="line number3 index2 alt2"><code class="cpp spaces">&nbsp;</code><code class="cpp keyword bold">public</code><code class="cpp plain">:</code></div><div class="line number4 index3 alt1"><code class="cpp spaces">&nbsp;&nbsp;</code><code class="cpp comments">//...</code></div><div class="line number5 index4 alt2"><code class="cpp spaces">&nbsp;</code><code class="cpp keyword bold">private</code><code class="cpp plain">:</code></div><div class="line number6 index5 alt1"><code class="cpp spaces">&nbsp;</code><code class="cpp plain">vector&lt;Shape*&gt; itsShapes;</code></div><div class="line number7 index6 alt2"><code class="cpp plain">};</code></div></div></td></tr></tbody></table></div></div>
+<p>A window class contains a list of its shapes<br>
+<a href="https://cppcodetips.files.wordpress.com/2013/12/class_diagram_winow_shapes.png"><img class="alignnone size-medium wp-image-113" alt="class_diagram_winow_shapes" src="./UML Class Diagram Explained With C++ samples _ CPP Code Tips_files/class_diagram_winow_shapes.png" width="300" height="58" srcset="https://cppcodetips.files.wordpress.com/2013/12/class_diagram_winow_shapes.png?w=297&amp;h=58 297w, https://cppcodetips.files.wordpress.com/2013/12/class_diagram_winow_shapes.png?w=150&amp;h=29 150w, https://cppcodetips.files.wordpress.com/2013/12/class_diagram_winow_shapes.png?w=300&amp;h=59 300w, https://cppcodetips.files.wordpress.com/2013/12/class_diagram_winow_shapes.png 364w" sizes="(max-width: 300px) 100vw, 300px"></a><br>
+Example 2:<br>
+A car has it’s tiers, and the scope of tyre doesn’t depend on a car since a tyre can be used for another car also<br>
+<a href="https://cppcodetips.files.wordpress.com/2013/12/class_diagram_car_tyres.png"><img class="alignnone size-full wp-image-114" alt="class_diagram_car_tyres" src="./UML Class Diagram Explained With C++ samples _ CPP Code Tips_files/class_diagram_car_tyres.png" srcset="https://cppcodetips.files.wordpress.com/2013/12/class_diagram_car_tyres.png 241w, https://cppcodetips.files.wordpress.com/2013/12/class_diagram_car_tyres.png?w=150 150w" sizes="(max-width: 241px) 100vw, 241px"></a></p>
+<p>A Rectangle class has its style, which may be shared by other shapes also; life time of style doesn’t depend on Rectangle class.</p>
+<p><img src="./UML Class Diagram Explained With C++ samples _ CPP Code Tips_files/aggregation-sample.png" alt="Aggregation-sample" class="aligncenter size-full wp-image-531" srcset="https://cppcodetips.files.wordpress.com/2013/12/aggregation-sample.png 371w, https://cppcodetips.files.wordpress.com/2013/12/aggregation-sample.png?w=150 150w, https://cppcodetips.files.wordpress.com/2013/12/aggregation-sample.png?w=300 300w" sizes="(max-width: 371px) 100vw, 371px"><br>
+<strong>Composition</strong><br>
+Composition is the stronger form of aggregation. Composition can occur when a class is a collection or container of other classes, but where the contained classes have a strong life cycle dependency on the container—essentially, if the container is destroyed, its contents are also destroyed<br>
+<em>Representation</em></p>
+<p><a href="https://cppcodetips.files.wordpress.com/2013/12/class_diagram_composition.png"><img class="alignnone size-medium wp-image-116" alt="class_diagram_composition" src="./UML Class Diagram Explained With C++ samples _ CPP Code Tips_files/class_diagram_composition.png" width="300" height="58" srcset="https://cppcodetips.files.wordpress.com/2013/12/class_diagram_composition.png?w=297&amp;h=58 297w, https://cppcodetips.files.wordpress.com/2013/12/class_diagram_composition.png?w=150&amp;h=29 150w, https://cppcodetips.files.wordpress.com/2013/12/class_diagram_composition.png?w=300&amp;h=59 300w, https://cppcodetips.files.wordpress.com/2013/12/class_diagram_composition.png 364w" sizes="(max-width: 300px) 100vw, 300px"></a><br>
+<em>C++ Example</em></p>
+<div><div id="highlighter_215113" class="syntaxhighlighter  cpp"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="cpp keyword bold">class</code> <code class="cpp plain">Circle</code></div><div class="line number2 index1 alt1"><code class="cpp plain">{</code></div><div class="line number3 index2 alt2"><code class="cpp keyword bold">private</code><code class="cpp plain">:</code></div><div class="line number4 index3 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">...</code></div><div class="line number5 index4 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">Point center;</code></div><div class="line number6 index5 alt1"><code class="cpp plain">....</code></div><div class="line number7 index6 alt2"><code class="cpp plain">};</code></div></div></td></tr></tbody></table></div></div>
+<p><a href="https://cppcodetips.files.wordpress.com/2013/12/class_diagram_circle_center.png"><img class="alignnone size-medium wp-image-117" alt="class_diagram_circle_center" src="./UML Class Diagram Explained With C++ samples _ CPP Code Tips_files/class_diagram_circle_center.png" width="300" height="58" srcset="https://cppcodetips.files.wordpress.com/2013/12/class_diagram_circle_center.png?w=297&amp;h=58 297w, https://cppcodetips.files.wordpress.com/2013/12/class_diagram_circle_center.png?w=150&amp;h=29 150w, https://cppcodetips.files.wordpress.com/2013/12/class_diagram_circle_center.png?w=300&amp;h=59 300w, https://cppcodetips.files.wordpress.com/2013/12/class_diagram_circle_center.png 364w" sizes="(max-width: 300px) 100vw, 300px"></a></p>
+<div><div id="highlighter_871825" class="syntaxhighlighter  cpp"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div><div class="line number13 index12 alt2">13</div><div class="line number14 index13 alt1">14</div><div class="line number15 index14 alt2">15</div><div class="line number16 index15 alt1">16</div><div class="line number17 index16 alt2">17</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="cpp keyword bold">class</code> <code class="cpp plain">X {</code></div><div class="line number2 index1 alt1"><code class="cpp plain">...</code></div><div class="line number3 index2 alt2"><code class="cpp plain">Y a; </code><code class="cpp comments">// 1; Composition</code></div><div class="line number4 index3 alt1"><code class="cpp plain">Y b[10]; </code><code class="cpp comments">// 0..10; Composition</code></div><div class="line number5 index4 alt2"><code class="cpp plain">};</code></div><div class="line number6 index5 alt1">&nbsp;</div><div class="line number7 index6 alt2"><code class="cpp keyword bold">class</code> <code class="cpp plain">X {</code></div><div class="line number8 index7 alt1"><code class="cpp plain">X() { a = </code><code class="cpp keyword bold">new</code> <code class="cpp plain">Y[10]; }</code></div><div class="line number9 index8 alt2"><code class="cpp plain">~X(){ </code><code class="cpp keyword bold">delete</code> <code class="cpp plain">[] a; }</code></div><div class="line number10 index9 alt1"><code class="cpp plain">...</code></div><div class="line number11 index10 alt2"><code class="cpp plain">Y *a; </code><code class="cpp comments">// 0..10; Composition</code></div><div class="line number12 index11 alt1"><code class="cpp plain">};</code></div><div class="line number13 index12 alt2">&nbsp;</div><div class="line number14 index13 alt1"><code class="cpp keyword bold">class</code> <code class="cpp plain">X {</code></div><div class="line number15 index14 alt2"><code class="cpp plain">...</code></div><div class="line number16 index15 alt1"><code class="cpp plain">vector a;</code></div><div class="line number17 index16 alt2"><code class="cpp plain">};</code></div></div></td></tr></tbody></table></div></div>
+<p><strong>Inheritance (Generalization)</strong><br>
+In Inheritance relationship a class is derived from another class. It is a “is a” relationship between two classes.<br>
+<em>Representation</em><br>
+<a href="https://cppcodetips.files.wordpress.com/2013/12/class_diagram_inheritance.png"><img class="alignnone size-full wp-image-118" alt="class_diagram_inheritance" src="./UML Class Diagram Explained With C++ samples _ CPP Code Tips_files/class_diagram_inheritance.png"></a><br>
+Here X and Y are normal classes.</p>
+<p><a href="https://cppcodetips.files.wordpress.com/2013/12/class_diagram_inheritance_2.png"><img class="alignnone size-medium wp-image-119" alt="class_diagram_inheritance_2" src="./UML Class Diagram Explained With C++ samples _ CPP Code Tips_files/class_diagram_inheritance_2.png" width="300" height="180" srcset="https://cppcodetips.files.wordpress.com/2013/12/class_diagram_inheritance_2.png?w=300&amp;h=180 300w, https://cppcodetips.files.wordpress.com/2013/12/class_diagram_inheritance_2.png?w=150&amp;h=90 150w, https://cppcodetips.files.wordpress.com/2013/12/class_diagram_inheritance_2.png 320w" sizes="(max-width: 300px) 100vw, 300px"></a></p>
+<p>Here Shape is an abstract class that is why it is shown in Italics. Draw () and Erase () methods of Shape class is pure virtual function, so it is also shown as italics.<br>
+<strong>Class Template</strong><br>
+Template class mean generic classes.Languages like C++, java, C# supports generic programming.<br>
+Representation<br>
+<a href="https://cppcodetips.files.wordpress.com/2013/12/class_diagram_template.png"><img class="alignnone size-full wp-image-120" alt="class_diagram_template" src="./UML Class Diagram Explained With C++ samples _ CPP Code Tips_files/class_diagram_template.png"></a><br>
+<em>C++ represenatation</em></p>
+<div><div id="highlighter_641280" class="syntaxhighlighter  cpp"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="cpp keyword bold">template</code> <code class="cpp plain">&lt;</code><code class="cpp keyword bold">class</code> <code class="cpp plain">T&gt;</code></div><div class="line number2 index1 alt1"><code class="cpp keyword bold">class</code> <code class="cpp plain">X {</code></div><div class="line number3 index2 alt2"><code class="cpp plain">...</code></div><div class="line number4 index3 alt1"><code class="cpp plain">...</code></div><div class="line number5 index4 alt2"><code class="cpp plain">...</code></div><div class="line number6 index5 alt1"><code class="cpp plain">};</code></div><div class="line number7 index6 alt2"><code class="cpp plain">X Y</code></div><div class="line number8 index7 alt1"><code class="cpp plain">...</code></div><div class="line number9 index8 alt2"><code class="cpp plain">X&lt;Y&gt; a;</code></div><div class="line number10 index9 alt1"><code class="cpp plain">...</code></div></div></td></tr></tbody></table></div></div>
+		<div class="wpcnt">
+			<div class="wpa wpmrec" style="visibility: visible !important; display: inline-block !important;">
+				<a class="wpa-about" href="https://wordpress.com/about-these-ads/" rel="nofollow">About these ads</a>
+				        <div id="crt-1303836433" style="width: 300px; height: 250px; visibility: visible !important; display: none;"></div>
+        <script type="text/javascript">
+        var o = document.getElementById('crt-1303836433');
+        if ("undefined"!=typeof Criteo) {
+            var p = o.parentNode;
+            p.style.setProperty('visibility', 'visible', 'important');  
+            p.style.setProperty('display', 'inline-block', 'important');
+            o.style.setProperty('visibility', 'visible', 'important');
+            o.style.setProperty('display', 'block', 'important');
+            Criteo.DisplayAcceptableAdIfAdblocked({zoneid:388248,containerid:"crt-1303836433",collapseContainerIfNotAdblocked:true});
+        } else {
+            o.style.setProperty('visibility', 'hidden', 'important');
+            o.style.setProperty('display', 'none', 'important');
+        }
+        </script>
+				<div class="u">
+					<script type="text/javascript">
+					(function(g){if("undefined"!=typeof g.__ATA){g.__ATA.initAd({sectionId:26942, width:300, height:250});}})(window);
+					</script><div id="automattic-id-9605" data-section="26942" style="width:300px; height:250px;"><iframe width="300" height="250" style="border:none;width:300px;height:250px;" frameborder="0" scrolling="no" name="fif_slot_automattic-id-_automattic-id-9605" id="fif_slot_automattic-id-_automattic-id-9605" src="javascript:&quot;&lt;html&gt;&lt;body style=&#39;background:transparent;margin:0%;&#39;&gt;&lt;/body&gt;&lt;/html&gt;&quot;"></iframe></div>
+				</div>
+			</div>
+		</div><div id="jp-post-flair" class="sharedaddy sd-like-enabled sd-sharing-enabled"><div class="sharedaddy sd-sharing-enabled"><div class="robots-nocontent sd-block sd-social sd-social-icon-text sd-sharing"><h3 class="sd-title">Share this:</h3><div class="sd-content"><ul><li class="share-twitter"><a rel="nofollow" data-shared="sharing-twitter-65" class="share-twitter sd-button share-icon" href="https://cppcodetips.wordpress.com/2013/12/23/uml-class-diagram-explained-with-c-samples/?share=twitter&amp;nb=1" target="_blank" title="Click to share on Twitter"><span>Twitter</span></a></li><li class="share-facebook"><a rel="nofollow" data-shared="sharing-facebook-65" class="share-facebook sd-button share-icon" href="https://cppcodetips.wordpress.com/2013/12/23/uml-class-diagram-explained-with-c-samples/?share=facebook&amp;nb=1" target="_blank" title="Share on Facebook"><span>Facebook<span class="share-count">30</span></span></a></li><li class="share-google-plus-1"><a rel="nofollow" data-shared="sharing-google-65" class="share-google-plus-1 sd-button share-icon" href="https://cppcodetips.wordpress.com/2013/12/23/uml-class-diagram-explained-with-c-samples/?share=google-plus-1&amp;nb=1" target="_blank" title="Click to share on Google+"><span>Google</span></a></li><li class="share-end"></li></ul></div></div></div><div class="sharedaddy sd-block sd-like jetpack-likes-widget-wrapper jetpack-likes-widget-loaded" id="like-post-wrapper-61073446-65-583eebcb9e82a" data-src="//widgets.wp.com/likes/#blog_id=61073446&amp;post_id=65&amp;origin=cppcodetips.wordpress.com&amp;obj_id=61073446-65-583eebcb9e82a" data-name="like-post-frame-61073446-65-583eebcb9e82a"><h3 class="sd-title">Like this:</h3><div class="likes-widget-placeholder post-likes-widget-placeholder" style="height: 55px; display: none;"><span class="button"><span>Like</span></span> <span class="loading">Loading...</span></div><iframe class="post-likes-widget jetpack-likes-widget" name="like-post-frame-61073446-65-583eebcb9e82a" height="55px" width="100%" frameborder="0" src="./UML Class Diagram Explained With C++ samples _ CPP Code Tips_files/saved_resource.html"></iframe><span class="sd-text-color"></span><a class="sd-link-color"></a></div>
+<div id="jp-relatedposts" class="jp-relatedposts" style="display: block;">
+	<h3 class="jp-relatedposts-headline"><em>Related</em></h3>
+<div class="jp-relatedposts-items jp-relatedposts-items-minimal"><p class="jp-relatedposts-post jp-relatedposts-post0" data-post-id="633" data-post-format="false"><span class="jp-relatedposts-post-title"><a class="jp-relatedposts-post-a" href="https://cppcodetips.wordpress.com/2016/10/31/decorator-pattern-explained-with-c-sample/" title="Decorator Pattern Explained with C++ sample
+
+Decorator pattern means decorating an existing class by giving additional responsibility to it dynamically. let&#39;s take an example of an ice cream;we can decorate an ice cream with different adding like(fruits , nuts and wafers etc). class diagram is shown below sample source code is shown below Source code using…" rel="nofollow" data-origin="65" data-position="0">Decorator Pattern Explained with C++ sample</a></span><span class="jp-relatedposts-post-context">In "C++"</span></p><p class="jp-relatedposts-post jp-relatedposts-post1" data-post-id="425" data-post-format="false"><span class="jp-relatedposts-post-title"><a class="jp-relatedposts-post-a" href="https://cppcodetips.wordpress.com/2014/12/24/adapter-pattern-using-c/" title="Adapter pattern using C++
+
+I think you are familiar with adapters, We use adapters to connect two incompatible devices.In design pattern term, the same is it&#39;s functionality.Using adapters we will convert interface of one class into another that the client expects.Adapter design pattern is also known as wrappers. Let&#39;s take an example, suppose we…" rel="nofollow" data-origin="65" data-position="1">Adapter pattern using C++</a></span><span class="jp-relatedposts-post-context">In "C++"</span></p><p class="jp-relatedposts-post jp-relatedposts-post2" data-post-id="408" data-post-format="false"><span class="jp-relatedposts-post-title"><a class="jp-relatedposts-post-a" href="https://cppcodetips.wordpress.com/2014/11/12/builder-design-pattern-using-c/" title="Builder Design Pattern using C++
+
+Builder pattern is a creational design pattern, which can be used in a situation where creating a complex objects involves a lot of steps.According to GO4 it&#39;s intent is to Separate the construction of a complex object from its representation so that the same construction process can create different representations.following…" rel="nofollow" data-origin="65" data-position="2">Builder Design Pattern using C++</a></span><span class="jp-relatedposts-post-context">In "C++"</span></p></div></div></div>			</div><!-- .entry-content -->
+
+	<footer class="entry-meta clear">
+		
+					<span class="tags-links">
+				<a href="https://cppcodetips.wordpress.com/tag/class-diagram/" rel="tag">Class Diagram</a>, <a href="https://cppcodetips.wordpress.com/tag/class-diagram-explained-with-c-codes/" rel="tag">Class Diagram Explained With C++ codes</a>			</span>
+					
+				<span class="comments-link"><a href="https://cppcodetips.wordpress.com/2013/12/23/uml-class-diagram-explained-with-c-samples/#comments">6 Comments</a></span>
+		
+			</footer><!-- .entry-meta -->
+</article><!-- #post-## -->
+
+				<nav role="navigation" id="nav-below" class="navigation-post">
+		<h1 class="screen-reader-text">Post navigation</h1>
+
+	
+		<div class="previous"><a href="https://cppcodetips.wordpress.com/2013/12/11/47/" rel="prev"><span class="meta-nav">«</span> C++ class for pthread conditional&nbsp;variable</a></div>		<div class="next"><a href="https://cppcodetips.wordpress.com/2014/01/02/c-wrapper-for-sqlite-c-api/" rel="next">C++ Wrapper For SQLITE C&nbsp;API <span class="meta-nav">»</span></a></div>
+	
+	</nav><!-- #nav-below -->
+	
+			
+
+	<div id="comments" class="comments-area">
+
+	
+			<h2 class="comments-title">
+			6 thoughts on “<span>UML Class Diagram Explained With C++&nbsp;samples</span>”		</h2>
+
+		
+		<ol class="comment-list">
+				<li class="comment byuser comment-author-xs4rahulgoel even thread-even depth-1 highlander-comment" id="li-comment-32">
+		<article id="comment-32" class="comment">
+			<footer>
+				<div class="comment-author vcard">
+					<img alt="" src="./UML Class Diagram Explained With C++ samples _ CPP Code Tips_files/3cd557249d890d00953b5eb5543d42d7" class="avatar avatar-34 grav-hashed grav-hijack" height="34" width="34" id="grav-3cd557249d890d00953b5eb5543d42d7-0">					<cite class="fn">xs4rahulgoel</cite>				</div><!-- .comment-author .vcard -->
+				
+				<div class="comment-meta commentmetadata">
+					<a href="https://cppcodetips.wordpress.com/2013/12/23/uml-class-diagram-explained-with-c-samples/#comment-32"><time datetime="2014-07-20T19:54:27+00:00">
+					July 20, 2014 at 7:54 pm					</time></a>
+									</div><!-- .comment-meta .commentmetadata -->
+			</footer>
+
+			<div class="comment-content"><p>Reblogged this on <a href="http://rahulkumar4.wordpress.com/2014/07/21/uml-class-diagram-explained-with-c-samples/" rel="nofollow">Technical Bytes</a> and commented:<br>
+Nice Article on the class diagrams</p>
+</div>
+
+			<div class="reply">
+				<a rel="nofollow" class="comment-reply-link" href="https://cppcodetips.wordpress.com/2013/12/23/uml-class-diagram-explained-with-c-samples/?replytocom=32#respond" onclick="return addComment.moveForm( &quot;comment-32&quot;, &quot;32&quot;, &quot;respond&quot;, &quot;65&quot; )" aria-label="Reply to xs4rahulgoel">Reply</a>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+
+	</li><!-- #comment-## -->
+	<li class="comment odd alt thread-odd thread-alt depth-1 highlander-comment" id="li-comment-46">
+		<article id="comment-46" class="comment">
+			<footer>
+				<div class="comment-author vcard">
+					<img alt="" src="./UML Class Diagram Explained With C++ samples _ CPP Code Tips_files/c5582e40688081d329314c40d8fd3247" class="avatar avatar-34 grav-hashed grav-hijack" height="34" width="34" id="grav-c5582e40688081d329314c40d8fd3247-0">					<cite class="fn">Parthasarathy</cite>				</div><!-- .comment-author .vcard -->
+				
+				<div class="comment-meta commentmetadata">
+					<a href="https://cppcodetips.wordpress.com/2013/12/23/uml-class-diagram-explained-with-c-samples/#comment-46"><time datetime="2014-10-07T04:49:38+00:00">
+					October 7, 2014 at 4:49 am					</time></a>
+									</div><!-- .comment-meta .commentmetadata -->
+			</footer>
+
+			<div class="comment-content"><p>Really useful article</p>
+</div>
+
+			<div class="reply">
+				<a rel="nofollow" class="comment-reply-link" href="https://cppcodetips.wordpress.com/2013/12/23/uml-class-diagram-explained-with-c-samples/?replytocom=46#respond" onclick="return addComment.moveForm( &quot;comment-46&quot;, &quot;46&quot;, &quot;respond&quot;, &quot;65&quot; )" aria-label="Reply to Parthasarathy">Reply</a>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+
+	</li><!-- #comment-## -->
+	<li class="comment even thread-even depth-1 highlander-comment" id="li-comment-51">
+		<article id="comment-51" class="comment">
+			<footer>
+				<div class="comment-author vcard">
+					<img alt="" src="./UML Class Diagram Explained With C++ samples _ CPP Code Tips_files/65df3cd446454c2c35b3bd280b6f0818" class="avatar avatar-34 grav-hashed grav-hijack" height="34" width="34" id="grav-65df3cd446454c2c35b3bd280b6f0818-0">					<cite class="fn"><a href="http://creately.com/" rel="external nofollow" class="url">Shalin</a></cite>				</div><!-- .comment-author .vcard -->
+				
+				<div class="comment-meta commentmetadata">
+					<a href="https://cppcodetips.wordpress.com/2013/12/23/uml-class-diagram-explained-with-c-samples/#comment-51"><time datetime="2014-10-21T13:20:37+00:00">
+					October 21, 2014 at 1:20 pm					</time></a>
+									</div><!-- .comment-meta .commentmetadata -->
+			</footer>
+
+			<div class="comment-content"><p>Very useful information specially for the 2nd year assignments OOP. I found more in the <a href="http://creately.com/diagram-type/article/simple-guidelines-drawing-uml-class-diagrams" rel="nofollow">UML diagram tutorial</a></p>
+</div>
+
+			<div class="reply">
+				<a rel="nofollow" class="comment-reply-link" href="https://cppcodetips.wordpress.com/2013/12/23/uml-class-diagram-explained-with-c-samples/?replytocom=51#respond" onclick="return addComment.moveForm( &quot;comment-51&quot;, &quot;51&quot;, &quot;respond&quot;, &quot;65&quot; )" aria-label="Reply to Shalin">Reply</a>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+
+	</li><!-- #comment-## -->
+	<li class="post pingback">
+		<p>Pingback: <a href="http://cutieslive.com/uml-relationships-explained/" rel="external nofollow" class="url">Uml Relationships Explained | Cuties Live</a></p>
+	</li><!-- #comment-## -->
+	<li class="comment odd alt thread-odd thread-alt depth-1 highlander-comment" id="li-comment-113">
+		<article id="comment-113" class="comment">
+			<footer>
+				<div class="comment-author vcard">
+					<img alt="" src="./UML Class Diagram Explained With C++ samples _ CPP Code Tips_files/29070100c92f228b040171b5b47b0904" class="avatar avatar-34 grav-hashed grav-hijack" height="34" width="34" id="grav-29070100c92f228b040171b5b47b0904-0">					<cite class="fn">Willem</cite>				</div><!-- .comment-author .vcard -->
+				
+				<div class="comment-meta commentmetadata">
+					<a href="https://cppcodetips.wordpress.com/2013/12/23/uml-class-diagram-explained-with-c-samples/#comment-113"><time datetime="2015-12-30T11:34:00+00:00">
+					December 30, 2015 at 11:34 am					</time></a>
+									</div><!-- .comment-meta .commentmetadata -->
+			</footer>
+
+			<div class="comment-content"><p>Very usefull article. But I have 1 question:<br>
+When you explain the relationship “assossiation” you have written the following code:</p>
+<p>Class X {</p>
+<p>  X(Y *y) : y_ptr(y) {}</p>
+<p>  void SetY(Y *y) { y_ptr = y;   }</p>
+<p>  void f()        { y_ptr-&gt;Foo();}<br>
+  —-<br>
+  Y *y_ptr; // pointer<br>
+};</p>
+<p>In the description you talk about assossiation as that an object “knows the other”. In the code I see a stronger relationships. For example you call Foo() in void f() which would seem more like a dependcy relationship. I also see that you have a member Y *y_ptr which I would seem that there is relationship aggragation.</p>
+<p>Am I wrong here?</p>
+<p>Greetings Willem</p>
+</div>
+
+			<div class="reply">
+				<a rel="nofollow" class="comment-reply-link" href="https://cppcodetips.wordpress.com/2013/12/23/uml-class-diagram-explained-with-c-samples/?replytocom=113#respond" onclick="return addComment.moveForm( &quot;comment-113&quot;, &quot;113&quot;, &quot;respond&quot;, &quot;65&quot; )" aria-label="Reply to Willem">Reply</a>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+
+	<ul class="children">
+	<li class="comment byuser comment-author-sadiquealy bypostauthor even depth-2 highlander-comment" id="li-comment-148">
+		<article id="comment-148" class="comment">
+			<footer>
+				<div class="comment-author vcard">
+					<img alt="" src="./UML Class Diagram Explained With C++ samples _ CPP Code Tips_files/5e884c3a40205a7517b4f36591cd4ca6" class="avatar avatar-34 grav-hashed grav-hijack" height="34" width="34" id="grav-5e884c3a40205a7517b4f36591cd4ca6-0">					<cite class="fn"><a href="https://cppcodetips.wordpress.com/" rel="external nofollow" class="url">Sadique Ali E</a></cite>				</div><!-- .comment-author .vcard -->
+				
+				<div class="comment-meta commentmetadata">
+					<a href="https://cppcodetips.wordpress.com/2013/12/23/uml-class-diagram-explained-with-c-samples/#comment-148"><time datetime="2016-02-25T05:53:58+00:00">
+					February 25, 2016 at 5:53 am					</time></a>
+									</div><!-- .comment-meta .commentmetadata -->
+			</footer>
+
+			<div class="comment-content"><p>here “Y *y_ptr ” in class “X”  doesn’t have any life cycle dependency(composition) nor it implies it any containment(aggregation); so it is an association. Association differs from aggregation only in that it does not imply any containment.</p>
+</div>
+
+			<div class="reply">
+				<a rel="nofollow" class="comment-reply-link" href="https://cppcodetips.wordpress.com/2013/12/23/uml-class-diagram-explained-with-c-samples/?replytocom=148#respond" onclick="return addComment.moveForm( &quot;comment-148&quot;, &quot;148&quot;, &quot;respond&quot;, &quot;65&quot; )" aria-label="Reply to Sadique Ali E">Reply</a>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+
+	</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		</ol><!-- .comment-list -->
+
+		
+	
+	
+					<div id="respond" class="comment-respond js">
+			<h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="https://cppcodetips.wordpress.com/2013/12/23/uml-class-diagram-explained-with-c-samples/#respond" style="display:none;">Cancel reply</a></small></h3>				<form action="https://cppcodetips.wordpress.com/wp-comments-post.php" method="post" id="commentform" class="comment-form">
+					<input type="hidden" id="highlander_comment_nonce" name="highlander_comment_nonce" value="2c2ac2ca9a"><input type="hidden" name="_wp_http_referer" value="/2013/12/23/uml-class-diagram-explained-with-c-samples/">
+<input type="hidden" name="hc_post_as" id="hc_post_as" value="guest">
+
+<div class="comment-form-field comment-textarea">
+	
+	<div id="comment-form-comment"><textarea tabindex="-1" style="position: absolute; top: -999px; left: 0px; right: auto; bottom: auto; border: 0px; padding: 0px; box-sizing: content-box; word-wrap: break-word; overflow: hidden; transition: none; height: 0px !important; min-height: 0px !important; font-family: Arial, Helvetica, Tahoma, Verdana, sans-serif; font-size: 14px; font-weight: 400; font-style: normal; letter-spacing: 0px; text-transform: none; text-decoration: none; word-spacing: 0px; text-indent: 0px; line-height: 21px; width: 618px;" class="autosizejs "></textarea><textarea id="comment" name="comment" title="Enter your comment here..." placeholder="Enter your comment here..." style="height: 41px; overflow: hidden; word-wrap: break-word; resize: none;"></textarea></div>
+</div>
+
+<div id="comment-form-identity" style="display: none;">
+
+	<div id="comment-form-nascar">
+		<p>Fill in your details below or click an icon to log in:</p>
+		<ul>
+			<li class="selected" style="display:none;">
+				<a href="https://cppcodetips.wordpress.com/2013/12/23/uml-class-diagram-explained-with-c-samples/#comment-form-guest" id="postas-guest" title="Guest">
+					<span></span>
+				</a>
+			</li>
+			<li>
+				<a href="https://cppcodetips.wordpress.com/2013/12/23/uml-class-diagram-explained-with-c-samples/#comment-form-load-service:WordPress.com" id="postas-wordpress" title="WordPress.com">
+					<span></span>
+				</a>
+			</li>
+			<li>
+				<a href="https://cppcodetips.wordpress.com/2013/12/23/uml-class-diagram-explained-with-c-samples/#comment-form-load-service:Twitter" id="postas-twitter" title="Twitter">
+					<span></span>
+				</a>
+			</li>
+			<li>
+				<a href="https://cppcodetips.wordpress.com/2013/12/23/uml-class-diagram-explained-with-c-samples/#comment-form-load-service:Facebook" id="postas-facebook" title="Facebook">
+					<span></span>
+				</a>
+			</li>
+			<li>
+			<iframe id="googleplus-sign-in" name="googleplus-sign-in" src="./UML Class Diagram Explained With C++ samples _ CPP Code Tips_files/saved_resource(8).html" width="24" height="24" scrolling="no" allowtransparency="true" seamless="seamless" frameborder="0"></iframe>
+			</li>
+		</ul>
+	</div>
+
+	<div id="comment-form-guest" class="comment-form-service selected">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+<a href="https://gravatar.com/site/signup/" target="_blank">				<img src="./UML Class Diagram Explained With C++ samples _ CPP Code Tips_files/ad516503a11cd5ca435acc9bb6523536" alt="Gravatar" width="25" class="no-grav">
+</a>			</div>
+
+				<div class="comment-form-fields">
+				<div class="comment-form-field comment-form-email">
+					<label for="email">Email <span class="required">(required)</span> <span class="nopublish">(Address never made public)</span></label>
+					<div class="comment-form-input"><input id="email" name="email" type="email" value=""></div>
+				</div>
+				<div class="comment-form-field comment-form-author">
+					<label for="author">Name <span class="required">(required)</span></label>
+					<div class="comment-form-input"><input id="author" name="author" type="text" value=""></div>
+				</div>
+				<div class="comment-form-field comment-form-url">
+					<label for="url">Website</label>
+					<div class="comment-form-input"><input id="url" name="url" type="url" value=""></div>
+				</div>
+			</div>
+	
+		</div>
+	</div>
+
+	<div id="comment-form-wordpress" class="comment-form-service">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+				<img src="./UML Class Diagram Explained With C++ samples _ CPP Code Tips_files/ad516503a11cd5ca435acc9bb6523536" alt="WordPress.com Logo" width="25" class="no-grav">
+			</div>
+
+				<div class="comment-form-fields">
+				<input type="hidden" name="wp_avatar" id="wordpress-avatar" class="comment-meta-wordpress" value="">
+				<input type="hidden" name="wp_user_id" id="wordpress-user_id" class="comment-meta-wordpress" value="">
+				<input type="hidden" name="wp_access_token" id="wordpress-access_token" class="comment-meta-wordpress" value="">
+				<p class="comment-form-posting-as pa-wordpress"><strong></strong> You are commenting using your WordPress.com account. <span class="comment-form-log-out">(&nbsp;<a href="javascript:HighlanderComments.doExternalLogout( &#39;wordpress&#39; );">Log&nbsp;Out</a>&nbsp;/&nbsp;<a href="https://cppcodetips.wordpress.com/2013/12/23/uml-class-diagram-explained-with-c-samples/#" onclick="javascript:HighlanderComments.switchAccount();return false;">Change</a>&nbsp;)</span></p>
+			</div>
+	
+		</div>
+	</div>
+
+	<div id="comment-form-twitter" class="comment-form-service">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+				<img src="./UML Class Diagram Explained With C++ samples _ CPP Code Tips_files/ad516503a11cd5ca435acc9bb6523536" alt="Twitter picture" width="25" class="no-grav">
+			</div>
+
+				<div class="comment-form-fields">
+				<input type="hidden" name="twitter_avatar" id="twitter-avatar" class="comment-meta-twitter" value="">
+				<input type="hidden" name="twitter_user_id" id="twitter-user_id" class="comment-meta-twitter" value="">
+				<input type="hidden" name="twitter_access_token" id="twitter-access_token" class="comment-meta-twitter" value="">
+				<p class="comment-form-posting-as pa-twitter"><strong></strong> You are commenting using your Twitter account. <span class="comment-form-log-out">(&nbsp;<a href="javascript:HighlanderComments.doExternalLogout( &#39;twitter&#39; );">Log&nbsp;Out</a>&nbsp;/&nbsp;<a href="https://cppcodetips.wordpress.com/2013/12/23/uml-class-diagram-explained-with-c-samples/#" onclick="javascript:HighlanderComments.switchAccount();return false;">Change</a>&nbsp;)</span></p>
+			</div>
+	
+		</div>
+	</div>
+
+	<div id="comment-form-facebook" class="comment-form-service">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+				<img src="./UML Class Diagram Explained With C++ samples _ CPP Code Tips_files/ad516503a11cd5ca435acc9bb6523536" alt="Facebook photo" width="25" class="no-grav">
+			</div>
+
+				<div class="comment-form-fields">
+				<input type="hidden" name="fb_avatar" id="facebook-avatar" class="comment-meta-facebook" value="">
+				<input type="hidden" name="fb_user_id" id="facebook-user_id" class="comment-meta-facebook" value="">
+				<input type="hidden" name="fb_access_token" id="facebook-access_token" class="comment-meta-facebook" value="">
+				<p class="comment-form-posting-as pa-facebook"><strong></strong> You are commenting using your Facebook account. <span class="comment-form-log-out">(&nbsp;<a href="javascript:HighlanderComments.doExternalLogout( &#39;facebook&#39; );">Log&nbsp;Out</a>&nbsp;/&nbsp;<a href="https://cppcodetips.wordpress.com/2013/12/23/uml-class-diagram-explained-with-c-samples/#" onclick="javascript:HighlanderComments.switchAccount();return false;">Change</a>&nbsp;)</span></p>
+			</div>
+	
+		</div>
+	</div>
+
+	<div id="comment-form-googleplus" class="comment-form-service">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+				<img src="./UML Class Diagram Explained With C++ samples _ CPP Code Tips_files/ad516503a11cd5ca435acc9bb6523536" alt="Google+ photo" width="25" class="no-grav">
+			</div>
+
+				<div class="comment-form-fields">
+				<input type="hidden" name="googleplus_avatar" id="googleplus-avatar" class="comment-meta-googleplus" value="">
+				<input type="hidden" name="googleplus_user_id" id="googleplus-user_id" class="comment-meta-googleplus" value="">
+				<input type="hidden" name="googleplus_access_token" id="googleplus-access_token" class="comment-meta-googleplus" value="">
+				<p class="comment-form-posting-as pa-googleplus"><strong></strong> You are commenting using your Google+ account. <span class="comment-form-log-out">(&nbsp;<a href="javascript:HighlanderComments.doExternalLogout( &#39;googleplus&#39; );">Log&nbsp;Out</a>&nbsp;/&nbsp;<a href="https://cppcodetips.wordpress.com/2013/12/23/uml-class-diagram-explained-with-c-samples/#" onclick="javascript:HighlanderComments.switchAccount();return false;">Change</a>&nbsp;)</span></p>
+			</div>
+	
+		</div>
+	</div>
+
+
+	<div id="comment-form-load-service" class="comment-form-service">
+		<div class="comment-form-posting-as-cancel"><a href="javascript:HighlanderComments.cancelExternalWindow();">Cancel</a></div>
+		<p>Connecting to %s</p>
+	</div>
+
+</div>
+
+<script type="text/javascript">
+var highlander_expando_javascript = function(){
+	var input = document.createElement( 'input' ),
+	    comment = jQuery( '#comment' );
+
+	if ( 'placeholder' in input ) {
+		comment.attr( 'placeholder', jQuery( '.comment-textarea label' ).remove().text() );
+	}
+
+	// Expando Mode: start small, then auto-resize on first click + text length
+	jQuery( '#comment-form-identity' ).hide();
+	jQuery( '#comment-form-subscribe' ).hide();
+	jQuery( '#commentform .form-submit' ).hide();
+
+	comment.css( { 'height':'10px' } ).one( 'focus', function() {
+		var timer = setInterval( HighlanderComments.resizeCallback, 10 )
+		jQuery( this ).animate( { 'height': HighlanderComments.initialHeight } ).delay( 100 ).queue( function(n) { clearInterval( timer ); HighlanderComments.resizeCallback(); n(); } );
+		jQuery( '#comment-form-identity' ).slideDown();
+		jQuery( '#comment-form-subscribe' ).slideDown();
+		jQuery( '#commentform .form-submit' ).slideDown();
+	});
+}
+jQuery(document).ready( highlander_expando_javascript );
+</script>
+
+<div id="comment-form-subscribe" style="display: none;">
+	<p class="comment-subscription-form"><input type="checkbox" name="subscribe" id="subscribe" value="subscribe" style="width: auto;"> <label class="subscribe-label" id="subscribe-label" for="subscribe" style="display: inline;">Notify me of new comments via email.</label></p></div>
+
+
+
+
+<p class="form-submit" style="display: none;"><input name="submit" type="submit" id="comment-submit" class="submit" value="Post Comment"> <input type="hidden" name="comment_post_ID" value="65" id="comment_post_ID">
+<input type="hidden" name="comment_parent" id="comment_parent" value="0">
+</p><p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="0944dfa838"></p>
+<input type="hidden" name="genseq" value="1480518603">
+<p style="display: none;"></p>				<input type="hidden" id="ak_js" name="ak_js" value="1480518689158"></form>
+					</div><!-- #respond -->
+		<div style="clear: both"></div>
+</div><!-- #comments -->
+
+		
+		</div><!-- #content -->
+	</div><!-- #primary -->
+
+	<div id="secondary" class="widget-area" role="complementary">
+
+		
+				<aside id="search-3" class="widget widget_search"><h1 class="widget-title">Search</h1>	<form method="get" id="searchform" class="searchform" action="https://cppcodetips.wordpress.com/" role="search">
+		<label for="s" class="screen-reader-text">Search</label>
+		<input type="search" class="field" name="s" value="" id="s" placeholder="Search …">
+		<input type="submit" class="submit" id="searchsubmit" value="Search">
+	</form>
+</aside><aside id="blog-stats-4" class="widget widget_blog-stats"><h1 class="widget-title">Total Visitors</h1>		<ul>
+			<li>71,393 hits</li>
+		</ul>
+		</aside><aside id="archives-5" class="widget widget_archive"><h1 class="widget-title">Archives</h1>		<ul>
+			<li><a href="https://cppcodetips.wordpress.com/2016/10/">October 2016</a></li>
+	<li><a href="https://cppcodetips.wordpress.com/2016/09/">September 2016</a></li>
+	<li><a href="https://cppcodetips.wordpress.com/2016/08/">August 2016</a></li>
+	<li><a href="https://cppcodetips.wordpress.com/2016/07/">July 2016</a></li>
+	<li><a href="https://cppcodetips.wordpress.com/2016/06/">June 2016</a></li>
+	<li><a href="https://cppcodetips.wordpress.com/2016/05/">May 2016</a></li>
+	<li><a href="https://cppcodetips.wordpress.com/2016/04/">April 2016</a></li>
+	<li><a href="https://cppcodetips.wordpress.com/2016/03/">March 2016</a></li>
+	<li><a href="https://cppcodetips.wordpress.com/2016/02/">February 2016</a></li>
+	<li><a href="https://cppcodetips.wordpress.com/2015/12/">December 2015</a></li>
+	<li><a href="https://cppcodetips.wordpress.com/2015/11/">November 2015</a></li>
+	<li><a href="https://cppcodetips.wordpress.com/2015/10/">October 2015</a></li>
+	<li><a href="https://cppcodetips.wordpress.com/2015/09/">September 2015</a></li>
+	<li><a href="https://cppcodetips.wordpress.com/2015/08/">August 2015</a></li>
+	<li><a href="https://cppcodetips.wordpress.com/2015/07/">July 2015</a></li>
+	<li><a href="https://cppcodetips.wordpress.com/2015/06/">June 2015</a></li>
+	<li><a href="https://cppcodetips.wordpress.com/2015/05/">May 2015</a></li>
+	<li><a href="https://cppcodetips.wordpress.com/2015/04/">April 2015</a></li>
+	<li><a href="https://cppcodetips.wordpress.com/2015/03/">March 2015</a></li>
+	<li><a href="https://cppcodetips.wordpress.com/2015/02/">February 2015</a></li>
+	<li><a href="https://cppcodetips.wordpress.com/2015/01/">January 2015</a></li>
+	<li><a href="https://cppcodetips.wordpress.com/2014/12/">December 2014</a></li>
+	<li><a href="https://cppcodetips.wordpress.com/2014/11/">November 2014</a></li>
+	<li><a href="https://cppcodetips.wordpress.com/2014/10/">October 2014</a></li>
+	<li><a href="https://cppcodetips.wordpress.com/2014/09/">September 2014</a></li>
+	<li><a href="https://cppcodetips.wordpress.com/2014/08/">August 2014</a></li>
+	<li><a href="https://cppcodetips.wordpress.com/2014/07/">July 2014</a></li>
+	<li><a href="https://cppcodetips.wordpress.com/2014/06/">June 2014</a></li>
+	<li><a href="https://cppcodetips.wordpress.com/2014/05/">May 2014</a></li>
+	<li><a href="https://cppcodetips.wordpress.com/2014/03/">March 2014</a></li>
+	<li><a href="https://cppcodetips.wordpress.com/2014/02/">February 2014</a></li>
+	<li><a href="https://cppcodetips.wordpress.com/2014/01/">January 2014</a></li>
+	<li><a href="https://cppcodetips.wordpress.com/2013/12/">December 2013</a></li>
+		</ul>
+		</aside><aside id="categories-6" class="widget widget_categories"><h1 class="widget-title">Catogories</h1>		<ul>
+	<li class="cat-item cat-item-2426"><a href="https://cppcodetips.wordpress.com/category/c/">C++</a>
+</li>
+	<li class="cat-item cat-item-36769"><a href="https://cppcodetips.wordpress.com/category/design-pattern/">Design Pattern</a>
+</li>
+	<li class="cat-item cat-item-1017"><a href="https://cppcodetips.wordpress.com/category/java/">Java</a>
+</li>
+	<li class="cat-item cat-item-7426"><a href="https://cppcodetips.wordpress.com/category/networking/">NetWorking</a>
+</li>
+	<li class="cat-item cat-item-61037"><a href="https://cppcodetips.wordpress.com/category/qt/">QT</a>
+</li>
+	<li class="cat-item cat-item-21985"><a href="https://cppcodetips.wordpress.com/category/c/stl/">STL</a>
+</li>
+	<li class="cat-item cat-item-1"><a href="https://cppcodetips.wordpress.com/category/uncategorized/">Uncategorized</a>
+</li>
+	<li class="cat-item cat-item-296767"><a href="https://cppcodetips.wordpress.com/category/vcmfc/">VC++/MFC</a>
+</li>
+	<li class="cat-item cat-item-113954"><a href="https://cppcodetips.wordpress.com/category/video-streaming/">Video Streaming</a>
+</li>
+		</ul>
+</aside><aside id="blog_subscription-3" class="widget widget_blog_subscription"><h1 class="widget-title"><label for="subscribe-field">Follow Blog via Email</label></h1>
+				<form action="https://subscribe.wordpress.com/" method="post" accept-charset="utf-8" id="subscribe-blog">
+											<p>Enter your email address to follow this blog and receive notifications of new posts by email.</p>
+<p>Join 11 other followers</p>
+						<p><input type="text" name="email" style="width: 95%; padding: 1px 2px" placeholder="Enter your email address" value="" id="subscribe-field"></p>
+					
+					<p>
+						<input type="hidden" name="action" value="subscribe">
+						<input type="hidden" name="blog_id" value="61073446">
+						<input type="hidden" name="source" value="https://cppcodetips.wordpress.com/2013/12/23/uml-class-diagram-explained-with-c-samples/">
+						<input type="hidden" name="sub-type" value="widget">
+						<input type="hidden" name="redirect_fragment" value="blog_subscription-3">
+						<input type="hidden" id="_wpnonce" name="_wpnonce" value="af524c363a">						<input type="submit" value="Follow">
+					</p>
+				</form>
+			
+</aside>	</div><!-- #secondary -->
+
+		</div><!-- #main -->
+
+		<footer id="colophon" class="site-footer" role="contentinfo">
+			<div class="site-info">
+								<a href="https://wordpress.com/?ref=footer_blog">Blog at WordPress.com.</a>
+				
+							</div><!-- .site-info -->
+		</footer><!-- #colophon -->
+	</div><!-- #page -->
+</div><!-- #wrapper .site-container -->
+
+<!--  -->
+<script type="text/javascript" src="./UML Class Diagram Explained With C++ samples _ CPP Code Tips_files/gprofiles.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var WPGroHo = {"my_hash":""};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./UML Class Diagram Explained With C++ samples _ CPP Code Tips_files/wpgroho.js"></script>
+
+	<script>
+		//initialize and attach hovercards to all gravatars
+		jQuery( document ).ready( function( $ ) {
+
+			if (typeof Gravatar === "undefined"){
+				return;
+			}
+
+			if ( typeof Gravatar.init !== "function" ) {
+				return;
+			}			
+
+			Gravatar.profile_cb = function( hash, id ) {
+				WPGroHo.syncProfileData( hash, id );
+			};
+			Gravatar.my_hash = WPGroHo.my_hash;
+			Gravatar.init( 'body', '#wp-admin-bar-my-account' );
+		});
+	</script>
+
+		<div style="display:none">
+	<div class="grofile-hash-map-3cd557249d890d00953b5eb5543d42d7">
+	</div>
+	<div class="grofile-hash-map-c5582e40688081d329314c40d8fd3247">
+	</div>
+	<div class="grofile-hash-map-65df3cd446454c2c35b3bd280b6f0818">
+	</div>
+	<div class="grofile-hash-map-29070100c92f228b040171b5b47b0904">
+	</div>
+	<div class="grofile-hash-map-5e884c3a40205a7517b4f36591cd4ca6">
+	</div>
+	</div>
+<script type="text/javascript">
+/* <![CDATA[ */
+var HighlanderComments = {"loggingInText":"Logging In\u2026","submittingText":"Posting Comment\u2026","postCommentText":"Post Comment","connectingToText":"Connecting to %s","commentingAsText":"%1$s: You are commenting using your %2$s account.","logoutText":"Log Out","loginText":"Log In","connectURL":"https:\/\/cppcodetips.wordpress.com\/public.api\/connect\/?action=request","logoutURL":"https:\/\/cppcodetips.wordpress.com\/wp-login.php?action=logout&_wpnonce=f54aa3b6cc","homeURL":"https:\/\/cppcodetips.wordpress.com\/","postID":"65","gravDefault":"identicon","enterACommentError":"Please enter a comment","enterEmailError":"Please enter your email address here","invalidEmailError":"Invalid email address","enterAuthorError":"Please enter your name here","gravatarFromEmail":"This picture will show whenever you leave a comment. Click to customize it.","logInToExternalAccount":"Log in to use details from one of these accounts.","change":"Change","changeAccount":"Change Account","comment_registration":"0","userIsLoggedIn":"","isJetpack":"0","text_direction":"ltr"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./UML Class Diagram Explained With C++ samples _ CPP Code Tips_files/saved_resource(4)"></script>
+
+	<script type="text/javascript">
+		window.WPCOM_sharing_counts = {"https:\/\/cppcodetips.wordpress.com\/2013\/12\/23\/uml-class-diagram-explained-with-c-samples\/":65};
+	</script>
+		<script type="text/javascript">
+			var windowOpen;
+		jQuery(document).on( 'ready post-load', function(){
+			jQuery( 'a.share-twitter' ).on( 'click', function() {
+				if ( 'undefined' !== typeof windowOpen ){ // If there's another sharing window open, close it.
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery(this).attr( 'href' ), 'wpcomtwitter', 'menubar=1,resizable=1,width=600,height=350' );
+				return false;
+			});
+		});
+		</script>
+				<script type="text/javascript">
+			var windowOpen;
+		jQuery(document).on( 'ready post-load', function(){
+			jQuery( 'a.share-facebook' ).on( 'click', function() {
+				if ( 'undefined' !== typeof windowOpen ){ // If there's another sharing window open, close it.
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery(this).attr( 'href' ), 'wpcomfacebook', 'menubar=1,resizable=1,width=600,height=400' );
+				return false;
+			});
+		});
+		</script>
+				<script type="text/javascript">
+			var windowOpen;
+		jQuery(document).on( 'ready post-load', function(){
+			jQuery( 'a.share-google-plus-1' ).on( 'click', function() {
+				if ( 'undefined' !== typeof windowOpen ){ // If there's another sharing window open, close it.
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery(this).attr( 'href' ), 'wpcomgoogle-plus-1', 'menubar=1,resizable=1,width=480,height=550' );
+				return false;
+			});
+		});
+		</script>
+		<script type="text/javascript" src="./UML Class Diagram Explained With C++ samples _ CPP Code Tips_files/form.js"></script>
+<script type="text/javascript" src="./UML Class Diagram Explained With C++ samples _ CPP Code Tips_files/saved_resource(5)"></script>
+<script type="text/javascript">
+	(function(){
+		var corecss = document.createElement('link');
+		var themecss = document.createElement('link');
+		var corecssurl = "https://s0.wp.com/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shCore.css?ver=3.0.9b";
+		if ( corecss.setAttribute ) {
+				corecss.setAttribute( "rel", "stylesheet" );
+				corecss.setAttribute( "type", "text/css" );
+				corecss.setAttribute( "href", corecssurl );
+		} else {
+				corecss.rel = "stylesheet";
+				corecss.href = corecssurl;
+		}
+		document.getElementsByTagName("head")[0].insertBefore( corecss, document.getElementById("syntaxhighlighteranchor") );
+		var themecssurl = "https://s0.wp.com/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shThemeDefault.css?m=1363304414h&amp;ver=3.0.9b";
+		if ( themecss.setAttribute ) {
+				themecss.setAttribute( "rel", "stylesheet" );
+				themecss.setAttribute( "type", "text/css" );
+				themecss.setAttribute( "href", themecssurl );
+		} else {
+				themecss.rel = "stylesheet";
+				themecss.href = themecssurl;
+		}
+		//document.getElementById("syntaxhighlighteranchor").appendChild(themecss);
+		document.getElementsByTagName("head")[0].insertBefore( themecss, document.getElementById("syntaxhighlighteranchor") );
+	})();
+	SyntaxHighlighter.config.strings.expandSource = '+ expand source';
+	SyntaxHighlighter.config.strings.help = '?';
+	SyntaxHighlighter.config.strings.alert = 'SyntaxHighlighter\n\n';
+	SyntaxHighlighter.config.strings.noBrush = 'Can\'t find brush for: ';
+	SyntaxHighlighter.config.strings.brushNotHtmlScript = 'Brush wasn\'t configured for html-script option: ';
+	SyntaxHighlighter.defaults['pad-line-numbers'] = false;
+	SyntaxHighlighter.defaults['toolbar'] = false;
+	SyntaxHighlighter.all();
+</script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var actionbardata = {"siteID":"61073446","siteName":"CPP Code Tips","siteURL":"http:\/\/cppcodetips.wordpress.com","icon":"<img alt='' src='https:\/\/s1.wp.com\/i\/void.gif' class='avatar avatar-36' height='36' width='36' \/>","canManageOptions":"","canCustomizeSite":"","isFollowing":"","themeSlug":"pub\/adelle","signupURL":"https:\/\/wordpress.com\/start\/","loginURL":"https:\/\/cppcodetips.wordpress.com\/wp-login.php?redirect_to=https%3A%2F%2Fcppcodetips.wordpress.com%2F2013%2F12%2F23%2Fuml-class-diagram-explained-with-c-samples%2F","themeURL":"https:\/\/wordpress.com\/themes\/adelle\/","xhrURL":"https:\/\/cppcodetips.wordpress.com\/wp-admin\/admin-ajax.php","nonce":"0f624d1db6","isSingular":"1","isFolded":"","isLoggedIn":"","isMobile":"","subscribeNonce":"<input type=\"hidden\" id=\"_wpnonce\" name=\"_wpnonce\" value=\"af524c363a\" \/>","referer":"https:\/\/cppcodetips.wordpress.com\/2013\/12\/23\/uml-class-diagram-explained-with-c-samples\/","canFollow":"1","statusMessage":"","customizeLink":"https:\/\/cppcodetips.wordpress.com\/wp-admin\/customize.php?url=https%3A%2F%2Fcppcodetips.wordpress.com%2F2013%2F12%2F23%2Fuml-class-diagram-explained-with-c-samples%2F","postID":"65","shortlink":"http:\/\/wp.me\/p48fZA-13","canEditPost":"","editLink":"https:\/\/wordpress.com\/post\/cppcodetips.wordpress.com\/65","i18n":{"view":"View Site","follow":"Follow","following":"Following","edit":"Edit","login":"Log In","signup":"Sign Up","customize":"Customize","report":"Report this content","themeInfo":"Get theme: Adelle","shortlink":"Copy shortlink","copied":"Copied","followedText":"New posts from this site will now appear in your <a href=\"https:\/\/wordpress.com\/\">Reader<\/a>","foldBar":"Collapse this bar","unfoldBar":"Expand this bar","editFollows":"Manage Sites I Follow","editSubs":"Manage Subscriptions","viewReader":"View Site in the Reader","subscribe":"Sign me up","enterEmail":"Enter your email address","followers":"","alreadyUser":"Already have a WordPress.com account? <a href=\"https:\/\/cppcodetips.wordpress.com\/wp-login.php?redirect_to=https%3A%2F%2Fcppcodetips.wordpress.com%2F2013%2F12%2F23%2Fuml-class-diagram-explained-with-c-samples%2F\">Log in now.<\/a>"}};
+/* ]]> */
+</script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var sharing_js_options = {"lang":"en","counts":"1"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./UML Class Diagram Explained With C++ samples _ CPP Code Tips_files/saved_resource(6)"></script><div id="actionbar" class="actnbr-pub-adelle actnbr-has-follow"><ul><li class="actnbr-btn actnbr-hidden"> 			    	<a class="actnbr-action actnbr-actn-follow" href=""><svg class="gridicon gridicon__follow" height="24px" width="24px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g><path d="M23 16v2h-3v3h-2v-3h-3v-2h3v-3h2v3h3zM20 2v9h-4v3h-3v4H4c-1.1 0-2-.9-2-2V2h18zM8 13v-1H4v1h4zm3-3H4v1h7v-1zm0-2H4v1h7V8zm7-4H4v2h14V4z"></path></g></svg><span>Follow</span></a> 			    	<div class="actnbr-popover tip tip-top-left actnbr-notice"> 			    		<div class="tip-arrow"></div> 			    		<div class="tip-inner actnbr-follow-bubble"></div> 			    	</div> 			    </li><li class="actnbr-ellipsis actnbr-hidden"> 			  <svg class="gridicon gridicon__ellipsis" height="24" width="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g><circle cx="5" cy="12" r="2"></circle><circle cx="19" cy="12" r="2"></circle><circle cx="12" cy="12" r="2"></circle></g></svg> 			  <div class="actnbr-popover tip tip-top-left actnbr-more"> 			  	<div class="tip-arrow"></div> 			  	<div class="tip-inner"> 				  <ul> 				    <li class="actnbr-sitename actnbr-hidden"><a href="http://cppcodetips.wordpress.com/"><img alt="" src="./UML Class Diagram Explained With C++ samples _ CPP Code Tips_files/void.gif" class="avatar avatar-36" height="36" width="36"> CPP Code Tips</a></li> 				   	<li class="actnbr-folded-customize actnbr-hidden"><a href="https://cppcodetips.wordpress.com/wp-admin/customize.php?url=https%3A%2F%2Fcppcodetips.wordpress.com%2F2013%2F12%2F23%2Fuml-class-diagram-explained-with-c-samples%2F"><svg class="gridicon gridicon__customize" height="20px" width="20px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g><path d="M2 6c0-1.505.78-3.08 2-4 0 .845.69 2 2 2 1.657 0 3 1.343 3 3 0 .386-.08.752-.212 1.09.74.594 1.476 1.19 2.19 1.81L8.9 11.98c-.62-.716-1.214-1.454-1.807-2.192C6.753 9.92 6.387 10 6 10c-2.21 0-4-1.79-4-4zm12.152 6.848l1.34-1.34c.607.304 1.283.492 2.008.492 2.485 0 4.5-2.015 4.5-4.5 0-.725-.188-1.4-.493-2.007L18 9l-2-2 3.507-3.507C18.9 3.188 18.225 3 17.5 3 15.015 3 13 5.015 13 7.5c0 .725.188 1.4.493 2.007L3 20l2 2 6.848-6.848c1.885 1.928 3.874 3.753 5.977 5.45l1.425 1.148 1.5-1.5-1.15-1.425c-1.695-2.103-3.52-4.092-5.448-5.977z" data-reactid=".2.1.1:0.1b.0"></path></g></svg><span>Customize<span></span></span></a></li> 				    <li class="actnbr-folded-follow actnbr-hidden"><a class="actnbr-action actnbr-actn-follow" href=""><svg class="gridicon gridicon__follow" height="24px" width="24px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g><path d="M23 16v2h-3v3h-2v-3h-3v-2h3v-3h2v3h3zM20 2v9h-4v3h-3v4H4c-1.1 0-2-.9-2-2V2h18zM8 13v-1H4v1h4zm3-3H4v1h7v-1zm0-2H4v1h7V8zm7-4H4v2h14V4z"></path></g></svg><span>Follow</span></a></li> 						<li class="actnbr-signup actnbr-hidden"><a href="https://wordpress.com/start/">Sign Up</a></li> 				    <li class="actnbr-login actnbr-hidden"><a href="https://cppcodetips.wordpress.com/wp-login.php?redirect_to=https%3A%2F%2Fcppcodetips.wordpress.com%2F2013%2F12%2F23%2Fuml-class-diagram-explained-with-c-samples%2F">Log In</a></li> 				     				    <li class="actnbr-shortlink actnbr-hidden"><a href="http://wp.me/p48fZA-13">Copy shortlink</a></li> 				     				     				     				    <li class="actnbr-subs actnbr-hidden"><a href="https://subscribe.wordpress.com/">Manage Subscriptions</a></li> 				    <li class="actnbr-fold actnbr-hidden"><a href="">Collapse this bar</a></li> 			      </ul> 			    </div> 		      </div> 		    </li> 	      </ul></div>
+<script type="text/javascript">
+// <![CDATA[
+(function() {
+try{
+  if ( window.external &&'msIsSiteMode' in window.external) {
+    if (window.external.msIsSiteMode()) {
+      var jl = document.createElement('script');
+      jl.type='text/javascript';
+      jl.async=true;
+      jl.src='/wp-content/plugins/ie-sitemode/custom-jumplist.php';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(jl, s);
+    }
+  }
+}catch(e){}
+})();
+// ]]>
+</script>		<iframe src="./UML Class Diagram Explained With C++ samples _ CPP Code Tips_files/master.html" scrolling="no" id="likes-master" name="likes-master" style="display:none;"></iframe>
+		<div id="likes-other-gravatars"><div class="likes-text"><span>%d</span> bloggers like this:</div><ul class="wpl-avatars sd-like-gravatars"></ul></div>
+		<script>
+			var _comscore = _comscore || [];
+			_comscore.push({
+				c1: "2",
+				c2: "7518284"
+			});
+			(function() {
+				var s = document.createElement("script"),
+					el = document.getElementsByTagName("script")[0];
+				s.async = true;
+				s.src = (document.location.protocol == "https:" ? "https://sb" : "http://b") + ".scorecardresearch.com/beacon.js";
+				el.parentNode.insertBefore(s, el);
+			})();
+		</script>
+		<noscript>
+			&lt;p class="robots-nocontent"&gt;&lt;img src="https://sb.scorecardresearch.com/p?c1=2&amp;c2=7518284&amp;c3=&amp;c4=&amp;c5=&amp;c6=&amp;c15=&amp;cv=2.0&amp;cj=1" alt="" style="display:none;" width="1" height="1" /&gt;&lt;/p&gt;
+		</noscript><script src="./UML Class Diagram Explained With C++ samples _ CPP Code Tips_files/w.js" type="text/javascript" async="" defer=""></script>
+<script type="text/javascript">
+_tkq = window._tkq || [];
+_stq = window._stq || [];
+_tkq.push(['storeContext', {'blog_id':'61073446','blog_tz':'0','user_lang':'en','blog_lang':'en','user_id':'0'}]);
+_stq.push(['view', {'blog':'61073446','v':'wpcom','tz':'0','user_id':'0','post':'65','subd':'cppcodetips'}]);
+_stq.push(['extra', {'crypt':'UE5XaGUuOTlwaD85flAmcm1mcmZsaDhkV11YdTdvUG14Q2VDQTR4LlUsLi82dU1mai9BMlJJWUJnN2NVaVRYLTdVMnBaJkd2bGQrZW5BWHQyV1MxRENWPWxYeC96PTR5bm1DQ2lpRlByXUVCTVNiTWhQaGl4d1dYRzJNejJjbWdibnZaME1HWjZMdHRSOGY/RXZ0TGk1cTlBTWZaUy4wMUs4bi5ZM2JDSW90Tmd2UGQlQnhIVDZLUkk4ZGZdTWltTyxPdUs0PzJxc20uWkJ0Q3E4XXAlVlFCNmdoZDk2JWMxfnxiM2EyZ3hJU3dRTmt8ZE5VJSxTSnVJV3x8ZzRFeXxjJTl6dV8sb19ubSs9W21VZHY/aD9RQ3VWKzFCcnlQVl0xUHA4'}]);
+_stq.push([ 'clickTrackerInit', '61073446', '65' ]);
+	</script>
+<noscript>&lt;img src="https://pixel.wp.com/b.gif?v=noscript" style="height:0px;width:0px;overflow:hidden" alt="" /&gt;</noscript>
+<script>
+if ( 'object' === typeof wpcom_mobile_user_agent_info ) {
+
+	wpcom_mobile_user_agent_info.init();
+	var mobileStatsQueryString = "";
+	
+	if( false !== wpcom_mobile_user_agent_info.matchedPlatformName )
+		mobileStatsQueryString += "&x_" + 'mobile_platforms' + '=' + wpcom_mobile_user_agent_info.matchedPlatformName;
+	
+	if( false !== wpcom_mobile_user_agent_info.matchedUserAgentName )
+		mobileStatsQueryString += "&x_" + 'mobile_devices' + '=' + wpcom_mobile_user_agent_info.matchedUserAgentName;
+	
+	if( wpcom_mobile_user_agent_info.isIPad() )
+		mobileStatsQueryString += "&x_" + 'ipad_views' + '=' + 'views';
+
+	if( "" != mobileStatsQueryString ) {
+		new Image().src = document.location.protocol + '//pixel.wp.com/g.gif?v=wpcom-no-pv' + mobileStatsQueryString + '&baba=' + Math.random();
+	}
+	
+}
+</script>
+
+
+<!--
+	generated 84 seconds ago
+	generated in 0.312 seconds
+	served from batcache in 0.001 seconds
+	expires in 216 seconds
+-->
+<iframe height="0" width="0" name="automattic-passback-receiver" src="./UML Class Diagram Explained With C++ samples _ CPP Code Tips_files/passback.html" style="position: absolute; left: -1000px; top: -1000px; border: 0px solid; width: 0px; height: 0px;"></iframe><img src="./UML Class Diagram Explained With C++ samples _ CPP Code Tips_files/g.gif" alt=":)" id="wpstats"></body></html>
